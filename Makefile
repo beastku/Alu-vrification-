@@ -5,10 +5,10 @@ EXEC = sim_alu
 all: build run wave
 
 build:
-	verilator -Wall --cc --exe --build $(SRC) -o $(EXEC) --trace --top-module $(TOP)
+	verilator -Wall --cc --exe --build $(SRC) -o $(EXEC) --trace --timing --top-module $(TOP)
 
 run:
-	./$(EXEC)
+	./obj_dir/$(EXEC)  # ← FIXED THIS LINE
 
 wave:
 	gtkwave dump.vcd &
